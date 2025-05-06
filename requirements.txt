@@ -1,2 +1,14 @@
-moviepy==1.0.3
-Pillow==10.2.0 
+# Core dependencies
+moviepy>=1.0.3
+Pillow>=9.5.0
+customtkinter>=5.2.0
+opencv-python>=4.8.0
+tkinterdnd2>=0.3.0
+
+# Alternative installation commands if pip install fails:
+# For Pillow: python -m pip install --upgrade pip setuptools wheel
+# For OpenCV: pip install opencv-python-headless
+# For CustomTkinter: pip install customtkinter --no-deps
+# For tkinterdnd2: 
+#   - pip install git+https://github.com/pmgagne/tkinterdnd2.git
+#   - pip install tkinterdnd2-tk 
