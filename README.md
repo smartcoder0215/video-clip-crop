@@ -101,13 +101,9 @@ If you encounter issues during installation:
    - Click "Select Input Image" to choose your image file
    - Click "Select Output Location" to choose where to save the result
    - Choose PNG or JPEG format using the radio buttons
-   - Adjust brightness and contrast if needed
    - Click "Convert Image"
 
-2. Additional image features:
-   - Rotate image
-   - Resize image
-   - Preview image before processing
+2. The image preview and progress bar will help you track the conversion process.
 
 ### Audio Tools Tab
 1. To extract audio from video:
