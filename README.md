@@ -1,11 +1,14 @@
-# Video Clipper Tool
+# Video and Image Tools
 
-A simple tool to help you edit your videos. You can either cut a portion of your video or remove the bottom part of it.
+A simple tool to help you edit your videos and convert images. You can:
+- Cut a portion of your video
+- Remove the bottom part of your video
+- Convert WebP images to PNG or JPEG format
 
 ## What You Need Before Starting
 
 1. Python installed on your computer (Download from [python.org](https://www.python.org/downloads/))
-2. The video file you want to edit
+2. The video or image file you want to edit
 
 ## How to Set Up
 
@@ -19,41 +22,62 @@ A simple tool to help you edit your videos. You can either cut a portion of your
 
 ## How to Use
 
+### Using the Graphical Interface (Recommended)
 1. Open Command Prompt (Windows) or Terminal (Mac/Linux)
 2. Navigate to the folder where you saved the files
 3. Run the program by typing:
    ```
+   python gui.py
+   ```
+4. The program will open a window with two tabs:
+   - Video Tools: For cutting and cropping videos
+   - Image Tools: For converting images
+
+### Video Tools Tab
+1. To cut a video:
+   - Click "Select Input Video" to choose your video file
+   - Click "Select Output Location" to choose where to save the result
+   - Enter the start and end times in seconds
+   - Click "Cut Video"
+
+2. To crop a video:
+   - Click "Select Input Video" to choose your video file
+   - Click "Select Output Location" to choose where to save the result
+   - Enter the height in pixels to keep from the top
+   - Click "Crop Video"
+
+### Image Tools Tab
+1. To convert an image:
+   - Click "Select Input Image" to choose your image file
+   - Click "Select Output Location" to choose where to save the result
+   - Choose PNG or JPEG format using the radio buttons
+   - Click "Convert Image"
+
+### Using Command Line (Alternative Method)
+If you prefer using the command line, you can still use the original scripts:
+
+1. For video editing:
+   ```
    python video_clipper.py
    ```
-4. The program will show you two options:
-   - Option 1: Cut a portion of your video
-   - Option 2: Remove the bottom part of your video
 
-### Option 1: Cutting a Video
-1. Choose option 1
-2. Enter the full path to your video file (e.g., `C:\Videos\myvideo.mp4`)
-3. Enter where you want to save the new video (e.g., `C:\Videos\cut_video.mp4`)
-4. Enter the start time in seconds (e.g., 10 for 10 seconds)
-5. Enter the end time in seconds (e.g., 30 for 30 seconds)
-6. Wait for the program to finish
-
-### Option 2: Removing Bottom of Video to Erase the WaterMark or Logo
-1. Choose option 2
-2. Enter the full path to your video file
-3. Enter where you want to save the new video
-4. Enter the height in pixels you want to keep from the top (e.g., 720 for HD quality)
-5. Wait for the program to finish
+2. For image conversion:
+   ```
+   python image_converter.py
+   ```
 
 ## Tips
-- Make sure you have enough disk space for the new video
-- The process might take a few minutes depending on your video size
-- Keep the original video file safe until you're happy with the result
+- Make sure you have enough disk space for the new files
+- The process might take a few minutes depending on your file size
+- Keep the original files safe until you're happy with the result
+- For images, PNG format is better for images with transparency, while JPEG is better for photographs
+- The GUI will show success or error messages to help you understand what's happening
 
 ## Need Help?
 If you encounter any problems:
 1. Make sure Python is installed correctly
 2. Check that you entered the correct file paths
 3. Ensure you have enough disk space
-4. Make sure the video file isn't being used by another program 
+4. Make sure the files aren't being used by another program
 
 If you need any other help, feel free to reach out to me. pavelnefir85@gmail.com
