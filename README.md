@@ -1,138 +1,111 @@
-# Video and Image Tools
+# Video Clipper
 
-A simple tool to help you edit your videos and convert images. You can:
-- Cut a portion of your video
-- Remove the bottom part of your video
-- Convert WebP images to PNG or JPEG format
-- Extract audio from videos
-- Adjust video and image properties
+A user-friendly desktop application for video and image processing, built with Python and CustomTkinter.
 
-## What You Need Before Starting
+## Features
 
-1. Python 3.8 or later installed on your computer (Download from [python.org](https://www.python.org/downloads/))
-2. The video or image file you want to edit
+### Video Tools
+- **Video Cutting**: Trim videos by specifying start and end times
+- **Video Cropping**: Crop videos to remove unwanted portions
+- **Video Rotation**: Rotate videos by 90°, 180°, or 270°
+- **Speed Adjustment**: Adjust video playback speed
+- **Preview Support**: View video thumbnails before processing
 
-## How to Set Up
+### Image Tools
+- **Format Conversion**: Convert images between multiple formats:
+  - PNG (supports transparency)
+  - JPEG (with quality optimization)
+  - JFIF (JPEG File Interchange Format)
+- **Preview Support**: View image thumbnails before conversion
+- **Quality Control**: Maintain image quality during conversion
+- **Transparency Handling**: Properly handle transparent images
 
-### Easy Installation (Recommended)
-1. Download all the files from this project to a folder on your computer
-2. Open Command Prompt (Windows) or Terminal (Mac/Linux)
-3. Navigate to the folder where you saved the files
-4. Run the setup script:
+### Audio Tools
+- **Audio Extraction**: Extract audio from video files
+- **Format Support**: Save audio in MP3 or WAV format
+- **Volume Control**: Adjust audio volume during extraction
+
+### User Interface
+- **Modern Dark Theme**: Sleek, eye-friendly interface
+- **Drag and Drop**: Easy file handling with drag-and-drop support
+- **Progress Tracking**: Visual progress bars for all operations
+- **Toast Notifications**: User-friendly status updates
+- **Settings Management**: Save and load user preferences
+
+## Installation
+
+### Windows
+1. Download the latest `VideoClipper.exe` from the releases
+2. Double-click to run (no installation required)
+
+### From Source
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/video-clipper.git
+   cd video-clipper
    ```
-   python setup.py
-   ```
-   This will automatically install all required dependencies.
-
-### Manual Installation
-If the automatic setup doesn't work, you can try installing dependencies manually:
-
-1. First, upgrade pip and install build tools:
-   ```
-   python -m pip install --upgrade pip setuptools wheel
-   ```
-
-2. Then install the required packages:
-   ```
+2. Install dependencies:
+   ```bash
    pip install -r requirements.txt
    ```
-
-3. If you encounter errors, try installing packages one by one:
-   ```
-   pip install moviepy>=1.0.3
-   pip install Pillow>=9.5.0
-   pip install customtkinter>=5.2.0
-   pip install opencv-python>=4.8.0
-   pip install tkinterdnd2>=0.3.0
-   ```
-
-### Troubleshooting Installation
-If you encounter issues during installation:
-
-1. For Pillow installation errors:
-   ```
-   python -m pip install --upgrade Pillow
-   ```
-
-2. For OpenCV installation errors:
-   ```
-   pip install opencv-python-headless
-   ```
-
-3. For CustomTkinter installation errors:
-   ```
-   pip install customtkinter --no-deps
-   ```
-
-## How to Use
-
-### Using the Graphical Interface (Recommended)
-1. Open Command Prompt (Windows) or Terminal (Mac/Linux)
-2. Navigate to the folder where you saved the files
-3. Run the program by typing:
-   ```
+3. Run the application:
+   ```bash
    python gui.py
    ```
-4. The program will open a window with three tabs:
-   - Video Tools: For cutting, cropping, and adjusting videos
-   - Image Tools: For converting and editing images
-   - Audio Tools: For extracting and processing audio
 
-### Video Tools Tab
-1. To cut a video:
-   - Click "Select Input Video" to choose your video file
-   - Click "Select Output Location" to choose where to save the result
-   - Enter the start and end times in seconds
-   - Click "Cut Video"
+## Usage
 
-2. To crop a video:
-   - Click "Select Input Video" to choose your video file
-   - Click "Select Output Location" to choose where to save the result
-   - Enter the height in pixels to keep from the top
-   - Click "Crop Video"
+### Video Processing
+1. Select the "Video Tools" tab
+2. Choose your input video file
+3. Set the desired parameters (time range, crop height, etc.)
+4. Select output location
+5. Click the appropriate action button
 
-3. Additional video features:
-   - Rotate video (90°, 180°, 270°)
-   - Adjust video speed
-   - Preview video before processing
+### Image Conversion
+1. Select the "Image Tools" tab
+2. Choose your input image file
+3. Select the desired output format (PNG, JPEG, or JFIF)
+4. Choose output location
+5. Click "Convert Image"
 
-### Image Tools Tab
-1. To convert an image:
-   - Click "Select Input Image" to choose your image file
-   - Click "Select Output Location" to choose where to save the result
-   - Choose PNG or JPEG format using the radio buttons
-   - Click "Convert Image"
+### Audio Extraction
+1. Select the "Audio Tools" tab
+2. Choose your input video file
+3. Select output format (MP3 or WAV)
+4. Adjust volume if needed
+5. Click "Extract Audio"
 
-2. The image preview and progress bar will help you track the conversion process.
+## Requirements
 
-### Audio Tools Tab
-1. To extract audio from video:
-   - Click "Select Video" to choose your video file
-   - Click "Select Output Location" to choose where to save the audio
-   - Choose MP3 or WAV format
-   - Adjust volume if needed
-   - Click "Extract Audio"
+- Windows 10 or later
+- For source installation:
+  - Python 3.8 or later
+  - Required Python packages (see requirements.txt)
 
-### Settings Tab
-1. Theme selection:
-   - Choose between Dark and Light themes
-2. Default output directory:
-   - Set a default location for saved files
+## Dependencies
 
-## Tips
-- Make sure you have enough disk space for the new files
-- The process might take a few minutes depending on your file size
-- Keep the original files safe until you're happy with the result
-- For images, PNG format is better for images with transparency, while JPEG is better for photographs
-- The GUI will show success or error messages to help you understand what's happening
-- You can drag and drop files directly into the program
+- customtkinter
+- pillow
+- opencv-python
+- moviepy
+- numpy
+- tkinterdnd2 (optional, for drag-and-drop support)
 
-## Need Help?
-If you encounter any problems:
-1. Make sure Python is installed correctly
-2. Check that you entered the correct file paths
-3. Ensure you have enough disk space
-4. Make sure the files aren't being used by another program
-5. Try running the setup script again if you encounter dependency issues
+## Contributing
 
-If you need any other help, feel free to reach out to me. smartcoder0215@gmail.com
+1. Fork the repository
+2. Create your feature branch
+3. Commit your changes
+4. Push to the branch
+5. Create a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Acknowledgments
+
+- CustomTkinter for the modern UI components
+- MoviePy for video processing capabilities
+- Pillow for image processing features
