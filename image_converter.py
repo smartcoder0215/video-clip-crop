@@ -8,24 +8,54 @@ def convert_image(input_path, output_path, output_format):
     Args:
         input_path (str): Path to the input image file
         output_path (str): Path where the converted image will be saved
-        output_format (str): Desired output format ('PNG' or 'JPEG')
+        output_format (str): Desired output format ('PNG', 'JPEG', or 'JFIF')
     """
     try:
+        # Validate input file exists
+        if not os.path.exists(input_path):
+            raise FileNotFoundError(f"Input file not found: {input_path}")
+
         # Open the image
         with Image.open(input_path) as img:
-            # Convert to RGB if needed (for JPEG)
-            if output_format == 'JPEG' and img.mode in ('RGBA', 'LA'):
-                background = Image.new('RGB', img.size, (255, 255, 255))
-                background.paste(img, mask=img.split()[-1])
-                img = background
+            # Convert to RGB if needed (for JPEG/JFIF)
+            if output_format in ('JPEG', 'JFIF'):
+                if img.mode in ('RGBA', 'LA', 'P'):
+                    # Convert P mode (palette) to RGB
+                    if img.mode == 'P':
+                        img = img.convert('RGB')
+                    else:
+                        # Create white background for transparent images
+                        background = Image.new('RGB', img.size, (255, 255, 255))
+                        background.paste(img, mask=img.split()[-1])
+                        img = background
+                elif img.mode not in ('RGB', 'L'):
+                    img = img.convert('RGB')
             
+            # Ensure output directory exists
+            output_dir = os.path.dirname(output_path)
+            if output_dir and not os.path.exists(output_dir):
+                os.makedirs(output_dir)
+
             # Save the image in the new format
-            img.save(output_path, format=output_format)
+            save_format = 'JPEG' if output_format in ('JPEG', 'JFIF') else output_format
+            save_params = {'format': save_format}
+            
+            # Add quality parameter for JPEG/JFIF
+            if save_format == 'JPEG':
+                save_params['quality'] = 95
+                save_params['optimize'] = True
+            
+            img.save(output_path, **save_params)
             
         print(f"Image successfully converted and saved to: {output_path}")
+        return True
         
+    except FileNotFoundError as e:
+        print(f"Error: {str(e)}")
+        raise
     except Exception as e:
-        print(f"An error occurred: {str(e)}")
+        print(f"An error occurred during conversion: {str(e)}")
+        raise
 
 def ensure_output_path(output_path, output_format):
     """
@@ -45,23 +75,27 @@ def main():
     print("Image Conversion Tool")
     print("1. Convert to PNG")
     print("2. Convert to JPEG")
-    choice = input("Enter your choice (1 or 2): ")
+    print("3. Convert to JFIF")
+    choice = input("Enter your choice (1, 2, or 3): ")
     
     input_image = input("Enter the path to your input image: ")
     output_image = input("Enter the path for the output image: ")
     
     # Set the output format based on choice
-    output_format = 'PNG' if choice == "1" else 'JPEG'
+    output_format = {
+        "1": "PNG",
+        "2": "JPEG",
+        "3": "JFIF"
+    }.get(choice, "PNG")
     
     # Ensure the output path is valid
     output_image = ensure_output_path(output_image, output_format)
     
-    # Ensure the output directory exists
-    output_dir = os.path.dirname(output_image)
-    if output_dir and not os.path.exists(output_dir):
-        os.makedirs(output_dir)
-    
-    convert_image(input_image, output_image, output_format)
+    try:
+        convert_image(input_image, output_image, output_format)
+        print("Conversion completed successfully!")
+    except Exception as e:
+        print(f"Conversion failed: {str(e)}")
 
 if __name__ == "__main__":
     main() 

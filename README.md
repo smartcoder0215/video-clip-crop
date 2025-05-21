@@ -135,4 +135,4 @@ If you encounter any problems:
 4. Make sure the files aren't being used by another program
 5. Try running the setup script again if you encounter dependency issues
 
-If you need any other help, feel free to reach out to me. pavelnefir85@gmail.com
+If you need any other help, feel free to reach out to me. smartcoder0215@gmail.com

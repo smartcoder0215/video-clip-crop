@@ -271,7 +271,8 @@ class MediaToolsGUI:
         format_frame.pack(fill="x", pady=8)
         self.format_var = tk.StringVar(value="PNG")
         ctk.CTkRadioButton(format_frame, text="PNG", variable=self.format_var, value="PNG").pack(side="left", padx=5)
-        ctk.CTkRadioButton(format_frame, text="JPEG", variable=self.format_var, value="JPEG").pack(side="left")
+        ctk.CTkRadioButton(format_frame, text="JPEG", variable=self.format_var, value="JPEG").pack(side="left", padx=5)
+        ctk.CTkRadioButton(format_frame, text="JFIF", variable=self.format_var, value="JFIF").pack(side="left")
         
         # Progress bar and status for image conversion
         self.image_progress = ctk.CTkProgressBar(convert_frame)
@@ -367,7 +368,17 @@ class MediaToolsGUI:
             self.save_last_output_dir(self.last_output_dir)
     
     def select_image_input(self):
-        filename = filedialog.askopenfilename(filetypes=[("Image files", "*.webp *.png *.jpg *.jpeg")])
+        filename = filedialog.askopenfilename(filetypes=[
+            ("All Image files", "*.webp *.png *.jpg *.jpeg *.jfif *.bmp *.gif *.tiff *.tif *.ico *.svg"),
+            ("WebP files", "*.webp"),
+            ("PNG files", "*.png"),
+            ("JPEG files", "*.jpg;*.jpeg;*.jfif"),
+            ("BMP files", "*.bmp"),
+            ("GIF files", "*.gif"),
+            ("TIFF files", "*.tiff;*.tif"),
+            ("ICO files", "*.ico"),
+            ("SVG files", "*.svg")
+        ])
         if filename:
             self.image_input_label.configure(text=filename)
             self.current_image = filename
@@ -378,10 +389,13 @@ class MediaToolsGUI:
         output_format = self.format_var.get()
         if output_format == "JPEG":
             defaultext = ".jpg"
-            filetypes = [("JPEG files", "*.jpg;*.jpeg"), ("PNG files", "*.png")]
+            filetypes = [("JPEG files", "*.jpg;*.jpeg"), ("PNG files", "*.png"), ("BMP files", "*.bmp")]
+        elif output_format == "JFIF":
+            defaultext = ".jfif"
+            filetypes = [("JFIF files", "*.jfif"), ("JPEG files", "*.jpg;*.jpeg"), ("PNG files", "*.png")]
         else:
             defaultext = ".png"
-            filetypes = [("PNG files", "*.png"), ("JPEG files", "*.jpg;*.jpeg")]
+            filetypes = [("PNG files", "*.png"), ("JPEG files", "*.jpg;*.jpeg"), ("BMP files", "*.bmp")]
         filename = filedialog.asksaveasfilename(defaultextension=defaultext, filetypes=filetypes, initialdir=initialdir)
         if filename:
             self.image_output_label.configure(text=filename)
